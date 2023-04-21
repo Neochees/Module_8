@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon detail</title>
+    <title>Detail</title>
     <style>
 html,body{
     margin: 0;
@@ -25,13 +25,12 @@ html,body{
         </style>
 </head>
 <body>
-    Hier komt de pokemon:
     <?php
 include("connection.inc.php");
 
 
 
-$sql = "SELECT * FROM characters WHERE id = ". $_GET["id"] ;
+$sql = "SELECT * FROM product WHERE id = ". $_GET["id"] ;
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -41,16 +40,13 @@ if (mysqli_num_rows($result) > 0) {
 <div class="pokemon">
 <?php
     echo "<a href='detail.php?id=".$row["id"]."'>id: " . $row["id"]. " - name: " . $row["name"]. "<img src='" . $row["picture"]. "'/></a>";
-    echo("type1: " . $row["color"] . "<br>");
-    echo("type2: " . $row["price"] . "<br>");
+    echo("color: " . $row["color"] . "<br>");
+    echo("price: " . $row["price"] . "<br>");
     echo("</div>");
 }
 } else {
   echo "0 results";
 }
-?>
-
-<?php
 mysqli_close($conn);
 ?>
 </body>
